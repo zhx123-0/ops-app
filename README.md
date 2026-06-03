@@ -27,10 +27,6 @@ ops-app/
 ```
 
 ## 效果截图
-
-### Grafana 监控面板
-![Grafana Dashboard](./images/grafana-dashboard.jpg)
-
 ### Prometheus 采集状态
 ![Prometheus Targets](./images/prometheus-targets.png)
 
