@@ -14,6 +14,8 @@
 │   Docker 容器化        K8s 编排部署   可视化面板      定时任务      AI 分析            │
 │                                                                                      │
 │   GitHub Actions CI/CD ──────────────────────→ 自动构建 → 测试 → 通过                  │
+│                                                                                      │
+│   阿里云 ECS + Nginx ─────────────────────────→ 云服务器部署 → 公网可访问                  │
 └──────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -44,9 +46,14 @@ Python 脚本定时查询 Prometheus API，CPU > 80% 或 5xx 错误率 > 5% 时�
 
 ![AI Alert Result](./images/5-ai-alert-result.png)
 
+### 第六步：云服务器部署上线
+部署至阿里云 ECS（Ubuntu 22.04），配置 Nginx 反向代理将 80 端口流量转发至应用容器，安全组放行端口，外网可直接访问。
+
+![Cloud Server](./images/6-cloud-server.png)
+
 ## 技术栈
 
-**Python · Flask · Docker · Kubernetes · Prometheus · Grafana · GitHub Actions · Shell · Coze AI**
+**Python · Flask · Docker · Kubernetes · Prometheus · Grafana · GitHub Actions · Shell · Coze AI · 阿里云 ECS · Nginx**
 
 ## 项目结构
 
@@ -76,6 +83,7 @@ ops-app/
 - **AI 告警分析**：Coze v3 流式 API，AI 输出五步结构化回复（摘要/等级/原因/排查命令/预防措施）
 - **Kubernetes 部署**：Deployment 2 副本 + NodePort Service + liveness/readiness 探针，排错实战：探针超时 → `kubectl describe` Events → 定位 psutil 阻塞 → 修复
 - **CI/CD**：GitHub Actions 自动构建镜像 + 启动容器健康检查测试
+- **云部署**：阿里云 ECS + Docker + 安全组 + Nginx 反向代理，公网可直接访问
 
 ## 快速启动
 
