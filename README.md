@@ -14,8 +14,6 @@
 │   Docker 容器化        K8s 编排部署   可视化面板      定时任务      AI 分析            │
 │                                                                                      │
 │   GitHub Actions CI/CD ──────────────────────→ 自动构建 → 测试 → 通过                  │
-│                                                                                      │
-│   阿里云 ECS + Nginx ────────────────────────→ 公网部署 → 反向代理                      │
 └──────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -48,7 +46,7 @@ Python 脚本定时查询 Prometheus API，CPU > 80% 或 5xx 错误率 > 5% 时�
 
 ## 技术栈
 
-**Python · Flask · Docker · Kubernetes · Prometheus · Grafana · GitHub Actions · Shell · Coze AI · 阿里云 ECS · Nginx**
+**Python · Flask · Docker · Kubernetes · Prometheus · Grafana · GitHub Actions · Shell · Coze AI**
 
 ## 项目结构
 
@@ -78,7 +76,6 @@ ops-app/
 - **AI 告警分析**：Coze v3 流式 API，AI 输出五步结构化回复（摘要/等级/原因/排查命令/预防措施）
 - **Kubernetes 部署**：Deployment 2 副本 + NodePort Service + liveness/readiness 探针，排错实战：探针超时 → `kubectl describe` Events → 定位 psutil 阻塞 → 修复
 - **CI/CD**：GitHub Actions 自动构建镜像 + 启动容器健康检查测试
-- **云部署**：阿里云 ECS + Docker + 安全组 + Nginx 反向代理（80 端口 + Header 透传）
 
 ## 快速启动
 
