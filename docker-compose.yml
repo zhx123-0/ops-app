@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - "5000:5000"
+    container_name: ops-app
+    networks:
+      - ops-net
+
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    container_name: ops-prometheus
+    networks:
+      - ops-net
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    container_name: ops-grafana
+    networks:
+      - ops-net
+
+networks:
+  ops-net:
+    driver: bridge
